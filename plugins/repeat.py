@@ -7,12 +7,12 @@ class CalcAvg(Plugin):
     """
 
     def process_message(self, data): 
-        if data['channel'].startswith("D") and data['type'] == 'message':
+        if data['channel'].startswith("D"):
 
             # save new channels (there might be other way to get the existing channels, didn't have time to explore)
             ChannelsManager.add(data['user'], data['channel'])
 
-            # check if msg is a number
+            # if the msg is a number - add it to the total average
             num = is_number(data['text'])
             if num is not None:
                 print("user", data['user'], "sent a number:", num)
